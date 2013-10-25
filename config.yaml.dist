@@ -1,0 +1,17 @@
+---
+named_locations:
+  home:
+    points:
+      - lat: 53.58327
+        lon: 9.71704
+        addr: Rissener Str. 39, 22880 Wedel
+    display_name: home
+  work:
+    points:
+      - lat: 53.5652904
+        lon: 9.9208798
+        addr: Stresemannstr. 375, 22761 Hamburg
+    display_name: work
+cluster_time: 1800
+cluster_move: 100
+dbpass: somerandompassword
