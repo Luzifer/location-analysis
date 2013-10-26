@@ -7,11 +7,15 @@ class DataQuery:
     self.requester = httplib2.Http('.cache')
     self.requester.add_credentials(username, password)
 
-  def get_data_since(self, account = 'knut', starttime = 0):
+  def get_data_since(self, account = 'knut', starttime = 0, endtime = None):
     '''
       URL http://dbmaster.autodns.kserver.biz:5984/locationmaps/_design/locations/_view/get_for_user_with_location?startkey=[%22knut%22,1290254183]
     '''
-    fullurl = '%s?startkey=[%%22%s%%22,%d]' % (self.baseurl, account, starttime)
+    if endtime != None:
+      fullurl = '%s?startkey=[%%22%s%%22,%d]&endkey=[%%22%s%%22,%d]' % (self.baseurl, account, starttime, account, endtime)
+    else: 
+      fullurl = '%s?startkey=[%%22%s%%22,%d]' % (self.baseurl, account, starttime)
+
     resp, content = self.requester.request(fullurl, 'GET')
 
     data = json.loads(content)
